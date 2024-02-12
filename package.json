@@ -1,5 +1,5 @@
 {
-  "name": "@baselime/template-time",
+  "name": "@baselime/sveltekit-opentelemetry-middleware",
   "version": "0.1.0",
   "description": "A Template for Typescript NPM Libraries",
   "main": "dist/index.js",
@@ -20,10 +20,14 @@
   "license": "MIT",
   "devDependencies": {
     "@release-it/keep-a-changelog": "^4.0.0",
+    "@sveltejs/kit": "^2.5.0",
     "@types/node": "^20.8.10",
     "release-it": "^16.2.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "flat": "^6.0.1"
   }
 }

@@ -1,3 +1,15 @@
-# Ultimate Typescript Repository Template
+# Svelte Kit OpenTelemetry Middleware
 
-Ship amazing typescript libraries direct to NPM
+A streamlined OpenTelemetry Middleware for SvelteKit
+
+```javascript
+import { withOpenTelemetry } from '@baselime/sveltekit-opentelemetry-middleware'
+import { BaselimeSDK } from '@baselime/node-opentelemetry';
+
+new BaselimeSDK({}).start();
+
+export const handle = withOpenTelemetry(async ({ event, resolve }) => {
+    return resolve(event);
+});
+```
+
