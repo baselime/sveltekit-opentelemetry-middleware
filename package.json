@@ -1,5 +1,6 @@
 {
   "name": "@baselime/sveltekit-opentelemetry-middleware",
+  "version": "0.1.0",
   "description": "A Template for Typescript NPM Libraries",
   "main": "dist/index.js",
   "type": "module",
