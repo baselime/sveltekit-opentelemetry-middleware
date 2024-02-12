@@ -28,6 +28,7 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
+    "@opentelemetry/api": "^1.7.0",
     "flat": "^6.0.1"
   }
 }
