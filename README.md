@@ -53,7 +53,7 @@ See [LICENSE](LICENSE) for more information.
 
 [docs]: https://baselime.io/docs/
 [docs_badge]: https://img.shields.io/badge/docs-reference-blue.svg?style=flat-square
-[release]: https://github.com/baselime/node-opentelemetry/releases/latest
-[release_badge]: https://img.shields.io/github/release/baselime/node-opentelemetry.svg?style=flat-square&ghcache=unused
+[release]: https://github.com/baselime/sveltekit-opentelemetry-middleware/releases/latest
+[release_badge]: https://img.shields.io/github/release/baselime/sveltekit-opentelemetry-middleware.svg?style=flat-square&ghcache=unused
 [license]: https://opensource.org/licenses/MIT
-[license_badge]: https://img.shields.io/github/license/baselime/node-opentelemetry.svg?color=blue&style=flat-square&ghcache=unused
+[license_badge]: https://img.shields.io/github/license/baselime/sveltekit-opentelemetry-middleware.svg?color=blue&style=flat-square&ghcache=unused
