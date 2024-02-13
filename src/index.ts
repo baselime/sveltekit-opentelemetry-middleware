@@ -33,9 +33,11 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
         if(opts.requestIdHeader) {
             possibleRequestIdHeaders.push(opts.requestIdHeader.toLowerCase());
         }
-        for(const [key, value] of args.event.request.headers.entries()) {
-            if(possibleRequestIdHeaders.includes(key.toLowerCase())) {
-                requestId = value;
+
+        for(let header of possibleRequestIdHeaders) {
+            const val = args.event.request.headers.get(header);
+            if(val) {
+                requestId = val;
                 break;
             }
         }
