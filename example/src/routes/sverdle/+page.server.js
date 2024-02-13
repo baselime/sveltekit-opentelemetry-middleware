@@ -1,8 +1,10 @@
 import { fail } from '@sveltejs/kit';
 import { Game } from './game';
-
-export const load = ({ cookies }) => {
+import axios from 'axios';
+export const load = async ({ cookies }) => {
 	const game = new Game(cookies.get('sverdle'));
+
+	await axios.get('https://google.com')
 
 	return {
 		/**

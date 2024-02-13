@@ -17,6 +17,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@baselime/node-opentelemetry": "^0.3.6"
+		"@baselime/node-opentelemetry": "^0.3.6",
+		"axios": "^1.6.7"
 	}
 }

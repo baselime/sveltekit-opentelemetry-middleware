@@ -53,6 +53,7 @@
 		});
 	}
 
+
 	/**
 	 * Modify the game state without making a trip to the server,
 	 * if client-side JavaScript is enabled
