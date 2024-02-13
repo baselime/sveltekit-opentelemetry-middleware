@@ -30,13 +30,19 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
         const name = `${args.event.request.method} ${args.event.route.id}`;
         let requestId: string | undefined = undefined;
 
-        if(opts.requestIdHeader) {
+        if (opts.requestIdHeader) {
             possibleRequestIdHeaders.push(opts.requestIdHeader.toLowerCase());
         }
 
-        for(let header of possibleRequestIdHeaders) {
+        for (let header of possibleRequestIdHeaders) {
             const val = args.event.request.headers.get(header);
-            if(val) {
+            if (header === "x-vercel-id" && val) {
+                // Only match the last part of the id because otherwise it can differ from the logs as it appends the edge location region to it.
+                const requestIdParts = val.split("::");
+                const id = requestIdParts[requestIdParts.length - 1];
+                requestId = id;
+            }
+            if (val) {
                 requestId = val;
                 break;
             }
@@ -57,7 +63,7 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
                             body: args.event.request.body,
                         }
                     },
-                   
+
                 },
                 svelte: {
                     route: args.event.route,
@@ -81,7 +87,7 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
                     }
                 }
             }));
-            
+
             span.end();
 
             return res;
