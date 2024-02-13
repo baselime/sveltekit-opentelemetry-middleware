@@ -1,6 +1,6 @@
 {
   "name": "@baselime/sveltekit-opentelemetry-middleware",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "keywords": [
     "sveltekit",
     "opentelementry",
