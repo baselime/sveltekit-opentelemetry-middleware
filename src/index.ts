@@ -27,7 +27,7 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
     opts = opts || {};
     const tracer = trace.getTracer('@baselime/sveltekit-opentelemetry-middleware');
     return async function (args) {
-        const name = `${args.event.request.method} ${args.event.route.id}`;
+        const name = `${args.event.request.method} ${args.event.url.pathname}`;
         let requestId: string | undefined = undefined;
 
         if (opts.requestIdHeader) {
