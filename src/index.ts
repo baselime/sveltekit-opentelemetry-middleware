@@ -1,6 +1,7 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, MaybePromise, RequestEvent, ResolveOptions } from '@sveltejs/kit';
 import { trace, propagation, ROOT_CONTEXT } from '@opentelemetry/api';
 import { flatten } from 'flat';
+import { url } from 'inspector';
 
 
 type TraceOptions = {
@@ -26,7 +27,10 @@ const possibleRequestIdHeaders = [
 export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
     opts = opts || {};
     const tracer = trace.getTracer('@baselime/sveltekit-opentelemetry-middleware');
-    return async function (args) {
+    return async function (args: {
+        event: RequestEvent;
+        resolve(event: RequestEvent, opts?: ResolveOptions): MaybePromise<Response>;
+    }) {
         const name = `${args.event.request.method} ${args.event.route.id}`;
         let requestId: string | undefined = undefined;
 
@@ -47,7 +51,8 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
                 break;
             }
         }
-
+        const url = new URL(args.event.request.url);
+        console.log(url)
         return tracer.startActiveSpan(name, {
             // SpanKind.SERVER -> 1
             kind: 1,
@@ -55,6 +60,7 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
                 requestId,
                 http: {
                     headers: args.event.request.headers,
+                    pathname: url.pathname,
                     method: args.event.request.method,
                     url: args.event.request.url,
                     ...opts.captureRequestBody && {
