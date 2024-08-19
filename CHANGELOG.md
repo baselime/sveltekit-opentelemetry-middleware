@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * Bug Fix: remove console.log
+
 ## [0.1.7] - 2024-07-03
 
 * add pathname to params
