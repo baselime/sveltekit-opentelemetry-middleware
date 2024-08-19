@@ -50,7 +50,6 @@ export function withOpenTelemetry(fn: Handle, opts?: TraceOptions): Handle {
             }
         }
         const url = new URL(args.event.request.url);
-        console.log(url)
         return tracer.startActiveSpan(name, {
             // SpanKind.SERVER -> 1
             kind: 1,
