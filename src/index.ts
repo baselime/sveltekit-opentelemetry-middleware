@@ -1,8 +1,6 @@
 import type { Handle, MaybePromise, RequestEvent, ResolveOptions } from '@sveltejs/kit';
-import { trace, propagation, ROOT_CONTEXT } from '@opentelemetry/api';
+import { trace } from '@opentelemetry/api';
 import { flatten } from 'flat';
-import { url } from 'inspector';
-
 
 type TraceOptions = {
     captureRequestBody?: boolean;
